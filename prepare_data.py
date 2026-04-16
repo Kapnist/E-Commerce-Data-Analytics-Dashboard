@@ -40,8 +40,34 @@ try:
     top_p = df.groupby('Product')['Quantity Ordered'].sum().sort_values(ascending=False).head(5).reset_index()
     top_p_final = top_p.rename(columns={'Product': 'nom', 'Quantity Ordered': 'quantite'}).to_dict(orient='records')
 
-    # --- LISTE DES PAYS ---
-    liste_pays = sorted(df['Pays'].unique().tolist())
+    # --- LISTE DES PAYS AVEC TOTAUX (Filtre) ---
+    # 1. On calcule le CA pour chaque région
+    ca_par_region = df.groupby('Pays')['Total_Vente'].sum().sort_values(ascending=False).reset_index()
+    
+    # 2. On calcule le CA GLOBAL de toute l'entreprise
+    total_entreprise = df['Total_Vente'].sum()
+    
+    # 3. On crée l'option "Global" avec son montant total
+    liste_pour_filtre = [
+        {
+            "nom": "Global", 
+            "label": f"Global ({round(total_entreprise):,} $)"
+        }
+    ]
+    
+    # 4. On ajoute les autres régions à la suite
+    for _, row in ca_par_region.iterrows():
+        liste_pour_filtre.append({
+            "nom": row['Pays'],
+            "label": f"{row['Pays']} ({round(row['Total_Vente']):,} $)"
+        })
+
+    # --- STRUCTURE FINALE ---
+    donnees_finales = {
+        "ventes_par_pays": df_final_ventes[['Pays', 'mois', 'ventes']].to_dict(orient='records'),
+        "top_produits": top_p_final,
+        "liste_pays": liste_pour_filtre  # Cette liste contient maintenant le label "Global (montant $)"
+    }
 
     # --- FORMATAGE POUR REACT ---
     # On renomme 'Total_Vente' en 'ventes' pour ton code React

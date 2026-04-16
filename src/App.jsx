@@ -10,7 +10,7 @@ const liste_pays = data_globale.liste_pays;
 function KpiCard({ titre, valeur, couleur }) {
   return (
     <div style={{ 
-      flex: '1 1 250px', // Permet aux cartes de s'étirer mais de passer à la ligne à moins de 250px
+      flex: '1 1 250px', 
       backgroundColor: 'white', padding: '20px', borderRadius: '10px', 
       borderLeft: `8px solid ${couleur}`, boxShadow: '0 4px 6px rgba(0,0,0,0.05)' 
     }}>
@@ -21,19 +21,21 @@ function KpiCard({ titre, valeur, couleur }) {
 }
 
 function App() {
-  const [paysChoisi, setPaysChoisi] = useState(liste_pays[0]);
+  // CORRECTION : On initialise avec le nom "Global"
+  const [paysChoisi, setPaysChoisi] = useState("Global");
+  
   const data_filtree = data_ventes_globales.filter(item => item.Pays === paysChoisi);
   const totalVentes = data_filtree.reduce((acc, curr) => acc + curr.ventes, 0);
-  const isMobile = window.innerWidth < 768; // Détecte si on est sur mobile
+  const isMobile = window.innerWidth < 768;
 
   return (
-    <div style={{ padding: '20px', backgroundColor: '#f8f9fc',
-     minHeight: '100vh', fontFamily: 'Arial, sans-serif' 
-     padding: isMobile ? '10px' : '30px', // Moins d'espace sur les bords du téléphone
-      // ... reste du style
-     }}>
+   <div style={{ 
+      padding: isMobile ? '10px' : '20px', 
+      backgroundColor: '#f8f9fc', 
+      minHeight: '100vh', 
+      fontFamily: 'Arial, sans-serif' 
+    }}>
       
-      {/* Header Responsive */}
       <div style={{ 
         display: 'flex', justifyContent: 'space-between', alignItems: 'center', 
         marginBottom: '30px', flexWrap: 'wrap', gap: '15px' 
@@ -42,23 +44,26 @@ function App() {
         <div style={{ backgroundColor: 'white', padding: '10px 20px', borderRadius: '10px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
           <label style={{ marginRight: '10px', fontWeight: 'bold' }}>Région :</label>
           <select value={paysChoisi} onChange={(e) => setPaysChoisi(e.target.value)}>
-            {liste_pays.map(p => <option key={p} value={p}>{p}</option>)}
+            {/* CORRECTION : On utilise p.nom pour la valeur et p.label pour l'affichage */}
+            {liste_pays.map(p => (
+              <option key={p.nom} value={p.nom}>
+                {p.label}
+              </option>
+            ))}
           </select>
         </div>
       </div>
 
-      {/* KPI CARDS : flexWrap est crucial ici */}
       <div style={{ display: 'flex', gap: '20px', marginBottom: '30px', flexWrap: 'wrap' }}>
         <KpiCard titre={`CA Total - ${paysChoisi}`} valeur={`${Math.round(totalVentes).toLocaleString()} $`} couleur="#4e73df" />
         <KpiCard titre="Moyenne Mensuelle" valeur={`${Math.round(totalVentes / (data_filtree.length || 1)).toLocaleString()} $`} couleur="#1cc88a" />
-        <KpiCard titre="Régions Actives" valeur={liste_pays.length} couleur="#36b9cc" />
+        <KpiCard titre="Régions Actives" valeur={liste_pays.length - 1} couleur="#36b9cc" />
       </div>
 
       <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-        {/* GRAPHIQUE - On ajoute minWidth: 0 pour empêcher le débordement Flexbox */}
         <div style={{ 
           flex: '2 1 600px', 
-          minWidth: 0, // CRUCIAL : empêche le graphique de pousser les murs
+          minWidth: 0, 
           backgroundColor: 'white', 
           padding: '20px', 
           borderRadius: '15px', 
@@ -66,38 +71,19 @@ function App() {
         }}>
           <h3 style={{ color: '#5a5c69', fontSize: '1.1rem' }}>Évolution des revenus ({paysChoisi})</h3>
           
-          {/* On s'assure que cette div prend TOUTE la largeur disponible et rien de plus */}
-          <div style={{ height: 350, minWidth: 0, backgroundColor: 'white', width: '100%', position: 'relative' }}>
+          <div style={{ height: 350, minWidth: 0, width: '100%', position: 'relative' }}>
             <ResponsiveContainer width="99%" height="100%">
-              <LineChart 
-                data={data_filtree} 
-                margin={{ top: 10, right: 10, left: -20, bottom: 20 }} // left négatif si tes chiffres sont petits
-              >
+              <LineChart data={data_filtree} margin={{ top: 10, right: 10, left: -20, bottom: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis 
-                  dataKey="mois" 
-                  angle={-45} 
-                  textAnchor="end" 
-                  height={60} 
-                  interval={0} 
-                  tick={{fontSize: 10}} 
-                />
+                <XAxis dataKey="mois" angle={-45} textAnchor="end" height={60} interval={0} tick={{fontSize: 10}} />
                 <YAxis tick={{fontSize: 10}} />
                 <Tooltip />
-                <Line 
-                  type="monotone" 
-                  dataKey="ventes" 
-                  stroke="#4e73df" 
-                  strokeWidth={4} 
-                  dot={{ r: 4 }} 
-                  animationDuration={500}
-                />
+                <Line type="monotone" dataKey="ventes" stroke="#4e73df" strokeWidth={4} dot={{ r: 4 }} animationDuration={500} />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        {/* COLONNE DROITE : Top Produits */}
         <div style={{ flex: '1 1 300px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
                 <h3 style={{ color: '#5a5c69', fontSize: '1.1rem' }}>Top 5 Produits</h3>
@@ -113,8 +99,6 @@ function App() {
                   </div>
                 ))}
             </div>
-            {/* Décommenter MapChart quand le bug de bibliothèque sera résolu */}
-            {/* <MapChart etatSelectionne={paysChoisi} /> */}
         </div>
       </div>
     </div>
