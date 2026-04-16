@@ -2,87 +2,103 @@ import pandas as pd
 import json
 import os
 
-output_file = r"C:\Users\kapni\OneDrive\Documents\Projet dev frontend\darshboard\src\data\vente.json"
-input_file = "all_data.csv" 
+# --- CHEMINS ---
+INPUT_FILE = "all_data.csv"
+OUTPUT_FILE = "src/data/vente.json"
 
-try:
-    print(f"🚀 Lecture du fichier : {input_file}")
-    df = pd.read_csv(input_file, sep=None, engine='python')
-    
-    # Nettoyage strict des lignes vides
-    df = df.dropna(subset=['Order Date', 'Price Each', 'Quantity Ordered', 'Purchase Address'])
+print(f"🚀 Chargement et nettoyage de {INPUT_FILE}...")
 
-    # Conversion des types
-    df['Order Date'] = pd.to_datetime(df['Order Date'], errors='coerce')
-    df['Price Each'] = pd.to_numeric(df['Price Each'], errors='coerce')
-    df['Quantity Ordered'] = pd.to_numeric(df['Quantity Ordered'], errors='coerce')
-    df['Total_Vente'] = df['Quantity Ordered'] * df['Price Each']
+# --- CHARGEMENT ---
+df = pd.read_csv(INPUT_FILE, sep=None, engine="python")
 
-    # Extraction du Pays (Dernier mot de l'adresse)
-    df['Pays'] = df['Purchase Address'].str.split(',').str[-1].str.strip().str.split(' ').str[0]
+# --- NETTOYAGE ---
+df = df[df["Quantity Ordered"] != "Quantity Ordered"]              # Supprime les lignes d'en-tête dupliquées
+df = df.dropna(subset=["Order Date", "Purchase Address"])          # Supprime les lignes vides
 
-    # Création des colonnes de temps
-    df['mois_num'] = df['Order Date'].dt.month
-    df['mois'] = df['Order Date'].dt.strftime('%B')
+# Conversion numérique vectorisée
+df["Quantity Ordered"] = pd.to_numeric(df["Quantity Ordered"], errors="coerce")
+df["Price Each"] = pd.to_numeric(df["Price Each"], errors="coerce")
 
-    # Suppression des erreurs de date (lignes NaT)
-    df = df.dropna(subset=['Order Date', 'Total_Vente', 'mois_num'])
+# Calcul du CA
+df["Total_Vente"] = df["Quantity Ordered"] * df["Price Each"]
 
-    # --- AGRÉGATION : On garde tout dans le groupe ---
-    print("📊 Calcul des statistiques par région...")
-    # On groupe par Pays, Numéro de mois ET Nom de mois
-    df_complet = df.groupby(['Pays', 'mois_num', 'mois']).agg({'Total_Vente': 'sum'}).reset_index()
-    
-    # On trie proprement par Pays puis par ordre chronologique
-    df_complet = df_complet.sort_values(by=['Pays', 'mois_num'])
+# Conversion date
+df["Order Date"] = pd.to_datetime(df["Order Date"], errors="coerce")
 
-    # --- TOP PRODUITS (Global) ---
-    top_p = df.groupby('Product')['Quantity Ordered'].sum().sort_values(ascending=False).head(5).reset_index()
-    top_p_final = top_p.rename(columns={'Product': 'nom', 'Quantity Ordered': 'quantite'}).to_dict(orient='records')
+# --- EXTRACTION FIABLE DE L'ÉTAT ---
+def extract_state(address):
+    try:
+        last = address.split(",")[-1].strip()   # ex: "CA 90001"
+        return last.split(" ")[0]               # ex: "CA"
+    except:
+        return "Inconnu"
 
-    # --- LISTE DES PAYS AVEC TOTAUX (Filtre) ---
-    # 1. On calcule le CA pour chaque région
-    ca_par_region = df.groupby('Pays')['Total_Vente'].sum().sort_values(ascending=False).reset_index()
-    
-    # 2. On calcule le CA GLOBAL de toute l'entreprise
-    total_entreprise = df['Total_Vente'].sum()
-    
-    # 3. On crée l'option "Global" avec son montant total
-    liste_pour_filtre = [
-        {
-            "nom": "Global", 
-            "label": f"Global ({round(total_entreprise):,} $)"
-        }
-    ]
-    
-    # 4. On ajoute les autres régions à la suite
-    for _, row in ca_par_region.iterrows():
-        liste_pour_filtre.append({
-            "nom": row['Pays'],
-            "label": f"{row['Pays']} ({round(row['Total_Vente']):,} $)"
-        })
+df["Pays"] = df["Purchase Address"].apply(extract_state)
 
-    # --- STRUCTURE FINALE ---
-    donnees_finales = {
-        "ventes_par_pays": df_final_ventes[['Pays', 'mois', 'ventes']].to_dict(orient='records'),
-        "top_produits": top_p_final,
-        "liste_pays": liste_pour_filtre  # Cette liste contient maintenant le label "Global (montant $)"
-    }
+# Extraction mois
+df["mois_num"] = df["Order Date"].dt.month
+df["mois"] = df["Order Date"].dt.strftime("%B")   # Mois en anglais
 
-    # --- FORMATAGE POUR REACT ---
-    # On renomme 'Total_Vente' en 'ventes' pour ton code React
-    donnees_finales = {
-        "ventes_par_pays": df_complet.rename(columns={'Total_Vente': 'ventes'}).to_dict(orient='records'),
-        "top_produits": top_p_final,
-        "liste_pays": liste_pays
-    }
+# Nettoyage final
+df = df.dropna(subset=["Total_Vente", "mois_num", "Pays"])
 
-    # Écriture
-    os.makedirs(os.path.dirname(output_file), exist_ok=True)
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(donnees_finales, f, indent=2)
+# --- VENTES PAR PAYS ---
+df_reg = (
+    df.groupby(["Pays", "mois_num", "mois"])["Total_Vente"]
+    .sum()
+    .reset_index(name="ventes")
+)
 
-    print(f"✅ Succès ! {len(liste_pays)} régions prêtes.")
+# --- VENTES GLOBALES ---
+df_glob = (
+    df.groupby(["mois_num", "mois"])["Total_Vente"]
+    .sum()
+    .reset_index(name="ventes")
+)
+df_glob["Pays"] = "Global"
 
-except Exception as e:
-    print(f"❌ Erreur : {e}")
+# Fusion
+all_ventes = pd.concat([df_reg, df_glob]).sort_values(["Pays", "mois_num"])
+
+
+# --- LISTE DES PAYS ---
+total_ca = df["Total_Vente"].sum()
+
+liste_pays = [{"nom": "Global", "label": f"Global ({round(total_ca):,} $)"}]
+
+ca_par_pays = (
+    df.groupby("Pays")["Total_Vente"]
+    .sum()
+    .sort_values(ascending=False)
+    .reset_index()
+)
+
+liste_pays.extend([
+    {"nom": row.Pays, "label": f"{row.Pays} ({round(row.Total_Vente):,} $)"}
+    for _, row in ca_par_pays.iterrows()
+    if row.Pays != "Inconnu"
+])
+
+# --- TOP PRODUITS ---
+top_produits = (
+    df.groupby("Product")["Quantity Ordered"]
+    .sum()
+    .nlargest(5)
+    .reset_index()
+    .rename(columns={"Product": "nom", "Quantity Ordered": "quantite"})
+    .to_dict(orient="records")
+)
+
+# --- EXPORT ---
+donnees = {
+    "ventes_par_pays": all_ventes.to_dict(orient="records"),
+    "top_produits": top_produits,
+    "liste_pays": liste_pays
+}
+
+os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    json.dump(donnees, f, indent=2)
+
+print(f"✅ Export terminé : CA global = {round(total_ca):,} $")

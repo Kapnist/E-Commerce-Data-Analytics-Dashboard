@@ -2,577 +2,649 @@
   "ventes_par_pays": [
     {
       "Pays": "CA",
-      "mois_num": 1.0,
+      "mois_num": 1,
       "mois": "January",
       "ventes": 1448380.46
     },
     {
       "Pays": "CA",
-      "mois_num": 2.0,
+      "mois_num": 2,
       "mois": "February",
       "ventes": 1778268.0
     },
     {
       "Pays": "CA",
-      "mois_num": 3.0,
+      "mois_num": 3,
       "mois": "March",
       "ventes": 2247312.66
     },
     {
       "Pays": "CA",
-      "mois_num": 4.0,
+      "mois_num": 4,
       "mois": "April",
       "ventes": 2725380.42
     },
     {
       "Pays": "CA",
-      "mois_num": 5.0,
+      "mois_num": 5,
       "mois": "May",
       "ventes": 2552737.4
     },
     {
       "Pays": "CA",
-      "mois_num": 6.0,
+      "mois_num": 6,
       "mois": "June",
       "ventes": 2129410.82
     },
     {
       "Pays": "CA",
-      "mois_num": 7.0,
+      "mois_num": 7,
       "mois": "July",
       "ventes": 2074432.8
     },
     {
       "Pays": "CA",
-      "mois_num": 8.0,
+      "mois_num": 8,
       "mois": "August",
       "ventes": 1769343.2
     },
     {
       "Pays": "CA",
-      "mois_num": 9.0,
+      "mois_num": 9,
       "mois": "September",
       "ventes": 1635342.82
     },
     {
       "Pays": "CA",
-      "mois_num": 10.0,
+      "mois_num": 10,
       "mois": "October",
       "ventes": 2958308.46
     },
     {
       "Pays": "CA",
-      "mois_num": 11.0,
+      "mois_num": 11,
       "mois": "November",
       "ventes": 2529340.16
     },
     {
       "Pays": "CA",
-      "mois_num": 12.0,
+      "mois_num": 12,
       "mois": "December",
       "ventes": 3581292.22
     },
     {
       "Pays": "GA",
-      "mois_num": 1.0,
+      "mois_num": 1,
       "mois": "January",
       "ventes": 298319.08
     },
     {
       "Pays": "GA",
-      "mois_num": 2.0,
+      "mois_num": 2,
       "mois": "February",
       "ventes": 352940.6
     },
     {
       "Pays": "GA",
-      "mois_num": 3.0,
+      "mois_num": 3,
       "mois": "March",
       "ventes": 463810.76
     },
     {
       "Pays": "GA",
-      "mois_num": 4.0,
+      "mois_num": 4,
       "mois": "April",
       "ventes": 568897.82
     },
     {
       "Pays": "GA",
-      "mois_num": 5.0,
+      "mois_num": 5,
       "mois": "May",
       "ventes": 477707.98
     },
     {
       "Pays": "GA",
-      "mois_num": 6.0,
+      "mois_num": 6,
       "mois": "June",
       "ventes": 439632.94
     },
     {
       "Pays": "GA",
-      "mois_num": 7.0,
+      "mois_num": 7,
       "mois": "July",
       "ventes": 423532.94
     },
     {
       "Pays": "GA",
-      "mois_num": 8.0,
+      "mois_num": 8,
       "mois": "August",
       "ventes": 338535.32
     },
     {
       "Pays": "GA",
-      "mois_num": 9.0,
+      "mois_num": 9,
       "mois": "September",
       "ventes": 342557.78
     },
     {
       "Pays": "GA",
-      "mois_num": 10.0,
+      "mois_num": 10,
       "mois": "October",
       "ventes": 612586.02
     },
     {
       "Pays": "GA",
-      "mois_num": 11.0,
+      "mois_num": 11,
       "mois": "November",
       "ventes": 550677.4
     },
     {
       "Pays": "GA",
-      "mois_num": 12.0,
+      "mois_num": 12,
       "mois": "December",
       "ventes": 721798.52
     },
     {
+      "Pays": "Global",
+      "mois_num": 1,
+      "mois": "January",
+      "ventes": 3644513.46
+    },
+    {
+      "Pays": "Global",
+      "mois_num": 2,
+      "mois": "February",
+      "ventes": 4404044.84
+    },
+    {
+      "Pays": "Global",
+      "mois_num": 3,
+      "mois": "March",
+      "ventes": 5614200.76
+    },
+    {
+      "Pays": "Global",
+      "mois_num": 4,
+      "mois": "April",
+      "ventes": 6781340.48
+    },
+    {
+      "Pays": "Global",
+      "mois_num": 5,
+      "mois": "May",
+      "ventes": 6305213.5
+    },
+    {
+      "Pays": "Global",
+      "mois_num": 6,
+      "mois": "June",
+      "ventes": 5155604.5200000005
+    },
+    {
+      "Pays": "Global",
+      "mois_num": 7,
+      "mois": "July",
+      "ventes": 5295551.5200000005
+    },
+    {
+      "Pays": "Global",
+      "mois_num": 8,
+      "mois": "August",
+      "ventes": 4488935.76
+    },
+    {
+      "Pays": "Global",
+      "mois_num": 9,
+      "mois": "September",
+      "ventes": 4195120.26
+    },
+    {
+      "Pays": "Global",
+      "mois_num": 10,
+      "mois": "October",
+      "ventes": 7473453.76
+    },
+    {
+      "Pays": "Global",
+      "mois_num": 11,
+      "mois": "November",
+      "ventes": 6399206.4
+    },
+    {
+      "Pays": "Global",
+      "mois_num": 12,
+      "mois": "December",
+      "ventes": 9226886.68
+    },
+    {
       "Pays": "MA",
-      "mois_num": 1.0,
+      "mois_num": 1,
       "mois": "January",
       "ventes": 402176.98
     },
     {
       "Pays": "MA",
-      "mois_num": 2.0,
+      "mois_num": 2,
       "mois": "February",
       "ventes": 429616.72000000003
     },
     {
       "Pays": "MA",
-      "mois_num": 3.0,
+      "mois_num": 3,
       "mois": "March",
       "ventes": 602047.62
     },
     {
       "Pays": "MA",
-      "mois_num": 4.0,
+      "mois_num": 4,
       "mois": "April",
       "ventes": 707614.22
     },
     {
       "Pays": "MA",
-      "mois_num": 5.0,
+      "mois_num": 5,
       "mois": "May",
       "ventes": 657607.3
     },
     {
       "Pays": "MA",
-      "mois_num": 6.0,
+      "mois_num": 6,
       "mois": "June",
       "ventes": 509495.78
     },
     {
       "Pays": "MA",
-      "mois_num": 7.0,
+      "mois_num": 7,
       "mois": "July",
       "ventes": 582994.28
     },
     {
       "Pays": "MA",
-      "mois_num": 8.0,
+      "mois_num": 8,
       "mois": "August",
       "ventes": 478550.52
     },
     {
       "Pays": "MA",
-      "mois_num": 9.0,
+      "mois_num": 9,
       "mois": "September",
       "ventes": 496817.46
     },
     {
       "Pays": "MA",
-      "mois_num": 10.0,
+      "mois_num": 10,
       "mois": "October",
       "ventes": 734072.78
     },
     {
       "Pays": "MA",
-      "mois_num": 11.0,
+      "mois_num": 11,
       "mois": "November",
       "ventes": 703092.04
     },
     {
       "Pays": "MA",
-      "mois_num": 12.0,
+      "mois_num": 12,
       "mois": "December",
       "ventes": 1019198.32
     },
     {
       "Pays": "ME",
-      "mois_num": 1.0,
+      "mois_num": 1,
       "mois": "January",
       "ventes": 45417.6
     },
     {
       "Pays": "ME",
-      "mois_num": 2.0,
+      "mois_num": 2,
       "mois": "February",
       "ventes": 59690.98
     },
     {
       "Pays": "ME",
-      "mois_num": 3.0,
+      "mois_num": 3,
       "mois": "March",
       "ventes": 61032.58
     },
     {
       "Pays": "ME",
-      "mois_num": 4.0,
+      "mois_num": 4,
       "mois": "April",
       "ventes": 85072.98
     },
     {
       "Pays": "ME",
-      "mois_num": 5.0,
+      "mois_num": 5,
       "mois": "May",
       "ventes": 115957.52
     },
     {
       "Pays": "ME",
-      "mois_num": 6.0,
+      "mois_num": 6,
       "mois": "June",
       "ventes": 60050.659999999996
     },
     {
       "Pays": "ME",
-      "mois_num": 7.0,
+      "mois_num": 7,
       "mois": "July",
       "ventes": 64842.28
     },
     {
       "Pays": "ME",
-      "mois_num": 8.0,
+      "mois_num": 8,
       "mois": "August",
       "ventes": 71993.2
     },
     {
       "Pays": "ME",
-      "mois_num": 9.0,
+      "mois_num": 9,
       "mois": "September",
       "ventes": 57519.12
     },
     {
       "Pays": "ME",
-      "mois_num": 10.0,
+      "mois_num": 10,
       "mois": "October",
       "ventes": 104645.04
     },
     {
       "Pays": "ME",
-      "mois_num": 11.0,
+      "mois_num": 11,
       "mois": "November",
       "ventes": 69362.44
     },
     {
       "Pays": "ME",
-      "mois_num": 12.0,
+      "mois_num": 12,
       "mois": "December",
       "ventes": 103932.14
     },
     {
       "Pays": "NY",
-      "mois_num": 1.0,
+      "mois_num": 1,
       "mois": "January",
       "ventes": 521182.58
     },
     {
       "Pays": "NY",
-      "mois_num": 2.0,
+      "mois_num": 2,
       "mois": "February",
       "ventes": 610744.52
     },
     {
       "Pays": "NY",
-      "mois_num": 3.0,
+      "mois_num": 3,
       "mois": "March",
       "ventes": 734524.4
     },
     {
       "Pays": "NY",
-      "mois_num": 4.0,
+      "mois_num": 4,
       "mois": "April",
       "ventes": 898895.5
     },
     {
       "Pays": "NY",
-      "mois_num": 5.0,
+      "mois_num": 5,
       "mois": "May",
       "ventes": 872252.8
     },
     {
       "Pays": "NY",
-      "mois_num": 6.0,
+      "mois_num": 6,
       "mois": "June",
       "ventes": 648297.16
     },
     {
       "Pays": "NY",
-      "mois_num": 7.0,
+      "mois_num": 7,
       "mois": "July",
       "ventes": 711432.2
     },
     {
       "Pays": "NY",
-      "mois_num": 8.0,
+      "mois_num": 8,
       "mois": "August",
       "ventes": 606366.92
     },
     {
       "Pays": "NY",
-      "mois_num": 9.0,
+      "mois_num": 9,
       "mois": "September",
       "ventes": 601127.66
     },
     {
       "Pays": "NY",
-      "mois_num": 10.0,
+      "mois_num": 10,
       "mois": "October",
       "ventes": 973908.82
     },
     {
       "Pays": "NY",
-      "mois_num": 11.0,
+      "mois_num": 11,
       "mois": "November",
       "ventes": 856360.64
     },
     {
       "Pays": "NY",
-      "mois_num": 12.0,
+      "mois_num": 12,
       "mois": "December",
       "ventes": 1293541.66
     },
     {
       "Pays": "OR",
-      "mois_num": 1.0,
+      "mois_num": 1,
       "mois": "January",
       "ventes": 184553.52
     },
     {
       "Pays": "OR",
-      "mois_num": 2.0,
+      "mois_num": 2,
       "mois": "February",
       "ventes": 239212.74
     },
     {
       "Pays": "OR",
-      "mois_num": 3.0,
+      "mois_num": 3,
       "mois": "March",
       "ventes": 313383.44
     },
     {
       "Pays": "OR",
-      "mois_num": 4.0,
+      "mois_num": 4,
       "mois": "April",
       "ventes": 394883.26
     },
     {
       "Pays": "OR",
-      "mois_num": 5.0,
+      "mois_num": 5,
       "mois": "May",
       "ventes": 347458.5
     },
     {
       "Pays": "OR",
-      "mois_num": 6.0,
+      "mois_num": 6,
       "mois": "June",
       "ventes": 279124.04
     },
     {
       "Pays": "OR",
-      "mois_num": 7.0,
+      "mois_num": 7,
       "mois": "July",
       "ventes": 287988.98
     },
     {
       "Pays": "OR",
-      "mois_num": 8.0,
+      "mois_num": 8,
       "mois": "August",
       "ventes": 233762.28
     },
     {
       "Pays": "OR",
-      "mois_num": 9.0,
+      "mois_num": 9,
       "mois": "September",
       "ventes": 207623.76
     },
     {
       "Pays": "OR",
-      "mois_num": 10.0,
+      "mois_num": 10,
       "mois": "October",
       "ventes": 403556.68
     },
     {
       "Pays": "OR",
-      "mois_num": 11.0,
+      "mois_num": 11,
       "mois": "November",
       "ventes": 346421.4
     },
     {
       "Pays": "OR",
-      "mois_num": 12.0,
+      "mois_num": 12,
       "mois": "December",
       "ventes": 503496.08
     },
     {
       "Pays": "TX",
-      "mois_num": 1.0,
+      "mois_num": 1,
       "mois": "January",
       "ventes": 463099.14
     },
     {
       "Pays": "TX",
-      "mois_num": 2.0,
+      "mois_num": 2,
       "mois": "February",
       "ventes": 590910.78
     },
     {
       "Pays": "TX",
-      "mois_num": 3.0,
+      "mois_num": 3,
       "mois": "March",
       "ventes": 753851.9
     },
     {
       "Pays": "TX",
-      "mois_num": 4.0,
+      "mois_num": 4,
       "mois": "April",
       "ventes": 848088.14
     },
     {
       "Pays": "TX",
-      "mois_num": 5.0,
+      "mois_num": 5,
       "mois": "May",
       "ventes": 858183.42
     },
     {
       "Pays": "TX",
-      "mois_num": 6.0,
+      "mois_num": 6,
       "mois": "June",
       "ventes": 661886.08
     },
     {
       "Pays": "TX",
-      "mois_num": 7.0,
+      "mois_num": 7,
       "mois": "July",
       "ventes": 725300.2
     },
     {
       "Pays": "TX",
-      "mois_num": 8.0,
+      "mois_num": 8,
       "mois": "August",
       "ventes": 610954.14
     },
     {
       "Pays": "TX",
-      "mois_num": 9.0,
+      "mois_num": 9,
       "mois": "September",
       "ventes": 541393.12
     },
     {
       "Pays": "TX",
-      "mois_num": 10.0,
+      "mois_num": 10,
       "mois": "October",
       "ventes": 1052663.44
     },
     {
       "Pays": "TX",
-      "mois_num": 11.0,
+      "mois_num": 11,
       "mois": "November",
       "ventes": 839792.06
     },
     {
       "Pays": "TX",
-      "mois_num": 12.0,
+      "mois_num": 12,
       "mois": "December",
       "ventes": 1228991.88
     },
     {
       "Pays": "WA",
-      "mois_num": 1.0,
+      "mois_num": 1,
       "mois": "January",
       "ventes": 281384.1
     },
     {
       "Pays": "WA",
-      "mois_num": 2.0,
+      "mois_num": 2,
       "mois": "February",
       "ventes": 342660.5
     },
     {
       "Pays": "WA",
-      "mois_num": 3.0,
+      "mois_num": 3,
       "mois": "March",
       "ventes": 438237.4
     },
     {
       "Pays": "WA",
-      "mois_num": 4.0,
+      "mois_num": 4,
       "mois": "April",
       "ventes": 552508.14
     },
     {
       "Pays": "WA",
-      "mois_num": 5.0,
+      "mois_num": 5,
       "mois": "May",
       "ventes": 423308.58
     },
     {
       "Pays": "WA",
-      "mois_num": 6.0,
+      "mois_num": 6,
       "mois": "June",
       "ventes": 427707.04
     },
     {
       "Pays": "WA",
-      "mois_num": 7.0,
+      "mois_num": 7,
       "mois": "July",
       "ventes": 425027.84
     },
     {
       "Pays": "WA",
-      "mois_num": 8.0,
+      "mois_num": 8,
       "mois": "August",
       "ventes": 379430.18
     },
     {
       "Pays": "WA",
-      "mois_num": 9.0,
+      "mois_num": 9,
       "mois": "September",
       "ventes": 312738.54
     },
     {
       "Pays": "WA",
-      "mois_num": 10.0,
+      "mois_num": 10,
       "mois": "October",
       "ventes": 633712.52
     },
     {
       "Pays": "WA",
-      "mois_num": 11.0,
+      "mois_num": 11,
       "mois": "November",
       "ventes": 504160.26
     },
     {
       "Pays": "WA",
-      "mois_num": 12.0,
+      "mois_num": 12,
       "mois": "December",
       "ventes": 774635.86
     }
@@ -580,33 +652,61 @@
   "top_produits": [
     {
       "nom": "AAA Batteries (4-pack)",
-      "quantite": 62034.0
+      "quantite": 62034
     },
     {
       "nom": "AA Batteries (4-pack)",
-      "quantite": 55270.0
+      "quantite": 55270
     },
     {
       "nom": "USB-C Charging Cable",
-      "quantite": 47950.0
+      "quantite": 47950
     },
     {
       "nom": "Lightning Charging Cable",
-      "quantite": 46434.0
+      "quantite": 46434
     },
     {
       "nom": "Wired Headphones",
-      "quantite": 41114.0
+      "quantite": 41114
     }
   ],
   "liste_pays": [
-    "CA",
-    "GA",
-    "MA",
-    "ME",
-    "NY",
-    "OR",
-    "TX",
-    "WA"
+    {
+      "nom": "Global",
+      "label": "Global (68,984,072 $)"
+    },
+    {
+      "nom": "CA",
+      "label": "CA (27,429,549 $)"
+    },
+    {
+      "nom": "NY",
+      "label": "NY (9,328,635 $)"
+    },
+    {
+      "nom": "TX",
+      "label": "TX (9,175,114 $)"
+    },
+    {
+      "nom": "MA",
+      "label": "MA (7,323,284 $)"
+    },
+    {
+      "nom": "GA",
+      "label": "GA (5,590,997 $)"
+    },
+    {
+      "nom": "WA",
+      "label": "WA (5,495,511 $)"
+    },
+    {
+      "nom": "OR",
+      "label": "OR (3,741,465 $)"
+    },
+    {
+      "nom": "ME",
+      "label": "ME (899,517 $)"
+    }
   ]
 }

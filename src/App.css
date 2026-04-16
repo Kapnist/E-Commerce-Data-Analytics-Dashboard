@@ -17,6 +17,41 @@
   }
 }
 
+/* Empêche tout débordement horizontal */
+body, html {
+  overflow-x: hidden;
+}
+
+/* Conteneur principal responsive */
+.dashboard-container {
+  padding: 10px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Fix Recharts overflow */
+.chart-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .kpi-container {
+    flex-direction: column;
+  }
+
+  .chart-card {
+    height: 350px !important;
+  }
+
+  .chart-wrapper {
+    height: 280px !important;
+  }
+}
+
+
 .hero {
   position: relative;
 
