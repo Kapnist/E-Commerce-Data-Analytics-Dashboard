@@ -24,9 +24,14 @@ function App() {
   const [paysChoisi, setPaysChoisi] = useState(liste_pays[0]);
   const data_filtree = data_ventes_globales.filter(item => item.Pays === paysChoisi);
   const totalVentes = data_filtree.reduce((acc, curr) => acc + curr.ventes, 0);
+  const isMobile = window.innerWidth < 768; // Détecte si on est sur mobile
 
   return (
-    <div style={{ padding: '20px', backgroundColor: '#f8f9fc', minHeight: '100vh', fontFamily: 'Arial, sans-serif' }}>
+    <div style={{ padding: '20px', backgroundColor: '#f8f9fc',
+     minHeight: '100vh', fontFamily: 'Arial, sans-serif' 
+     padding: isMobile ? '10px' : '30px', // Moins d'espace sur les bords du téléphone
+      // ... reste du style
+     }}>
       
       {/* Header Responsive */}
       <div style={{ 
@@ -62,8 +67,8 @@ function App() {
           <h3 style={{ color: '#5a5c69', fontSize: '1.1rem' }}>Évolution des revenus ({paysChoisi})</h3>
           
           {/* On s'assure que cette div prend TOUTE la largeur disponible et rien de plus */}
-          <div style={{ height: 350, width: '100%', position: 'relative' }}>
-            <ResponsiveContainer width="100%" height="100%">
+          <div style={{ height: 350, minWidth: 0, backgroundColor: 'white', width: '100%', position: 'relative' }}>
+            <ResponsiveContainer width="99%" height="100%">
               <LineChart 
                 data={data_filtree} 
                 margin={{ top: 10, right: 10, left: -20, bottom: 20 }} // left négatif si tes chiffres sont petits
