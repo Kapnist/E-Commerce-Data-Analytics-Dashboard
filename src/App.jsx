@@ -101,7 +101,7 @@ const formatCA = (value) => {
           style={{
             flex: "2 1 600px",
             backgroundColor: "white",
-            padding: "20px",
+            padding: "10px",
             borderRadius: "15px",
             height: "450px",
             minWidth: "300px"
@@ -111,8 +111,8 @@ const formatCA = (value) => {
 
           <div className="chart-wrapper" style={{ height: "350px", width: "100%"}}>
             {dataFiltre.length > 0 ? (
-              <ResponsiveContainer width="100%" height="100%" >
-                <LineChart data={dataFiltre} margin={{ top: 10, right: 10, left: 40, bottom: 80 }}>
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={dataFiltre} margin={{ top: 10, right: 5, bottom: 20}}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis
                     dataKey="mois"
